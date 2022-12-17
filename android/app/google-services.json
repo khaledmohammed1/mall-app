@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "999596399771",
+    "project_id": "mallapp-e7e82",
+    "storage_bucket": "mallapp-e7e82.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:999596399771:android:4f219f3539ac290de2fa3e",
+        "android_client_info": {
+          "package_name": "com.example.mall_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "999596399771-0204a9un22ql37gohvinn76fs9tcshgg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkQSvBFb0-IsklLm3hwwnSBjs9nvuzh9A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "999596399771-0204a9un22ql37gohvinn76fs9tcshgg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
