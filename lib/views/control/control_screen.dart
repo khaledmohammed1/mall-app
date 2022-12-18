@@ -19,7 +19,7 @@ class ControlScreen extends StatelessWidget {
               Get.to(()=> const SellerHomeScreen());
             },
             style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
-            child: const Text("Sign as Seller"),
+            child: const Text("Sign as Seller",style: TextStyle(color: Colors.white),),
           ),
         ),
         Center(
@@ -27,8 +27,9 @@ class ControlScreen extends StatelessWidget {
             onPressed: () {
             },
             style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
-            child: const Text("Sign as Buyer"),
+            child: const Text("Sign as Buyer",style: TextStyle(color: Colors.white),
           ),
+        ),
         ),
       ],
     ));

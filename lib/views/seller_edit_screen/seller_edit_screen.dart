@@ -4,19 +4,19 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../controllers/sellProductController.dart';
 
-class SellerAddProductScreen extends StatelessWidget {
+class SellerEditProductScreen extends StatelessWidget {
 
-  SellerAddProductScreen({Key? key}) : super(key: key);
+  SellerEditProductScreen({Key? key}) : super(key: key);
 
   final SellProductController sellProductController =
-      Get.put(SellProductController());
+  Get.put(SellProductController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text("Add Products Screen",style: TextStyle(color: Colors.white),),
+        title: const Text("Edit Products Screen",style: TextStyle(color: Colors.white),),
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
@@ -35,7 +35,7 @@ class SellerAddProductScreen extends StatelessWidget {
                         onPressed: () async {
                           ImagePicker picker = ImagePicker();
                           final XFile? image =
-                              await picker.pickImage(source: ImageSource.gallery);
+                          await picker.pickImage(source: ImageSource.gallery);
                           if (image == null) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
@@ -85,8 +85,8 @@ class SellerAddProductScreen extends StatelessWidget {
                 ),
                 Center(
                   child: ElevatedButton(
-
                     onPressed: () {
+                      Get.back();
                     },
                     child: const Text(
                       "Save",
