@@ -2,16 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CategoryItem extends StatelessWidget {
-  const CategoryItem({Key? key, required this.image, required this.name,required this.widget}) : super(key: key);
+  const CategoryItem({
+    Key? key,
+    required this.image,
+    required this.name,
+    required this.widget,
+    this.onTap,
+  }) : super(key: key);
 
   final String image;
   final String name;
   final Widget widget;
+  final Function? onTap;
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.to(()=> widget);
+        onTap!();
+        Get.to(widget, transition: Transition.fadeIn);
       },
       child: Container(
         padding: const EdgeInsets.all(10),
@@ -23,7 +32,10 @@ class CategoryItem extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(image,width: 70,),
+            Image.network(
+              image,
+              width: 70,
+            ),
             const SizedBox(
               height: 5,
             ),

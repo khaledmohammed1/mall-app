@@ -5,14 +5,11 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import 'helper/binding.dart';
-import 'views/seller_add_product/sellerAddProductScreen.dart';
-import 'views/seller_home/seller_home_screen.dart';
 
-
-Future main() async{
-
+Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
@@ -36,10 +33,9 @@ class MyApp extends StatelessWidget {
       800: const Color.fromRGBO(51, 153, 255, .9),
       900: const Color.fromRGBO(51, 153, 255, 1),
     };
-    return   GetMaterialApp(
+    return GetMaterialApp(
       theme: ThemeData(
-          primarySwatch: MaterialColor(0xff39A9DB, color),
-        
+        primarySwatch: MaterialColor(0xff39A9DB, color),
       ),
       initialBinding: Binding(),
       debugShowCheckedModeBanner: false,

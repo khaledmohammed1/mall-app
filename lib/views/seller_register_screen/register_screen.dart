@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../controllers/auth_controller.dart';
+import '../../controllers/seller_auth_controller.dart';
 import '../../widgets/custom_button.dart';
 import '../../widgets/custom_text.dart';
 import '../../widgets/custom_text_fom_field.dart';
@@ -50,8 +50,8 @@ class RegisterScreen extends StatelessWidget {
                     alignment: Alignment.center,
                     fontSize: 30,
                   ),
-                   SizedBox(
-                    height: MediaQuery.of(context).size.height*.03,
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * .03,
                   ),
                   CustomTextFormField(
                     controller: controller.nameController,
@@ -65,8 +65,8 @@ class RegisterScreen extends StatelessWidget {
                       return null;
                     },
                   ),
-                   SizedBox(
-                    height: MediaQuery.of(context).size.height*.03,
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * .03,
                   ),
                   CustomTextFormField(
                     controller: controller.emailController,
@@ -83,8 +83,8 @@ class RegisterScreen extends StatelessWidget {
                       return null;
                     },
                   ),
-                   SizedBox(
-                    height: MediaQuery.of(context).size.height*.03,
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * .03,
                   ),
                   CustomTextFormField(
                     keyBoardType: TextInputType.number,
@@ -105,13 +105,12 @@ class RegisterScreen extends StatelessWidget {
                       return null;
                     },
                   ),
-                   SizedBox(
-                    height: MediaQuery.of(context).size.height*.03,
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * .03,
                   ),
                   CustomTextFormField(
                     obscureText: true,
                     controller: controller.passwordController,
-                    alignment: Alignment.topRight,
                     text: "Password ",
                     hint: "Enter Password ",
                     onSave: (value) {},
@@ -126,13 +125,12 @@ class RegisterScreen extends StatelessWidget {
                       return null;
                     },
                   ),
-                   SizedBox(
-                    height: MediaQuery.of(context).size.height*.03,
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * .03,
                   ),
                   CustomTextFormField(
                     obscureText: true,
                     controller: controller.repeatPasswordController,
-                    alignment: Alignment.topRight,
                     text: "Confirm Password",
                     hint: "Enter Confirm Password",
                     onSave: (value) {},
@@ -151,20 +149,25 @@ class RegisterScreen extends StatelessWidget {
                       return null;
                     },
                   ),
-                   SizedBox(
-                    height: MediaQuery.of(context).size.height*.05,
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * .05,
                   ),
                   CustomButton(
                     onPressed: () {
                       controller.registerFormKey.currentState!.save();
                       if (controller.registerFormKey.currentState!.validate()) {
-                        controller.register();
+                        controller.register(
+                          controller.nameController.text,
+                          controller.phoneController.text.toString(),
+                          controller.emailController.text,
+                          controller.passwordController.text,
+                        );
                       }
                     },
-                    text: 'Register New User',
+                    text: 'Register New Seller',
                   ),
-                   SizedBox(
-                    height: MediaQuery.of(context).size.height*.025,
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * .025,
                   ),
                 ],
               ),

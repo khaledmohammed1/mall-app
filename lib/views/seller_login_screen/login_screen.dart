@@ -1,25 +1,26 @@
-import 'package:customer_ecommerce_app/views/seller_home/seller_home_screen.dart';
-import 'package:customer_ecommerce_app/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../controllers/auth_controller.dart';
+import '../../controllers/seller_auth_controller.dart';
+import '../../widgets/custom_button.dart';
 import '../../widgets/custom_text.dart';
 import '../../widgets/custom_text_fom_field.dart';
-import '../register_screen/register_screen.dart';
+import '../seller_register_screen/register_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: GetBuilder<AuthController>(
         init: Get.put(AuthController()),
-        builder:(controller)=> Padding(
-          padding: EdgeInsets.only( top: MediaQuery.of(context).size.height*0.1,left: MediaQuery.of(context).size.width*.05, right: MediaQuery.of(context).size.width*.05),
+        builder: (controller) => Padding(
+          padding: EdgeInsets.only(
+            top: MediaQuery.of(context).size.height * 0.1,
+            left: MediaQuery.of(context).size.width * .05,
+            right: MediaQuery.of(context).size.width * .05,
+          ),
           child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: Form(
@@ -33,28 +34,27 @@ class LoginScreen extends StatelessWidget {
                       width: MediaQuery.of(context).size.width * .55,
                     ),
                   ),
-                   SizedBox(
-                    height: MediaQuery.of(context).size.height*.03,
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * .03,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Column(
-                         crossAxisAlignment: CrossAxisAlignment.start,
-                         children: [
-                           CustomText(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CustomText(
                             text: "Hello",
                             fontSize: 30,
+                          ),
+                          CustomText(
+                            text: "Login to continue",
+                            fontSize: 14,
+                            color: Colors.grey,
+                          ),
+                        ],
                       ),
-
-                           CustomText(
-                             text: "Login to continue",
-                             fontSize: 14,
-                             color: Colors.grey,
-                           ),
-                         ],
-                       ),
                       InkWell(
                         onTap: () => Get.to(const RegisterScreen()),
                         child: CustomText(
@@ -65,17 +65,16 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                   SizedBox(
-                    height: MediaQuery.of(context).size.height*.05,
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * .05,
                   ),
                   CustomTextFormField(
                     controller: controller.emailController,
                     text: "Email ",
                     hint: "Enter Email",
-                    onSave: (value) {
-                    },
+                    onSave: (value) {},
                     validator: (value) {
-                      if(!controller.emailController.text.contains("@")){
+                      if (!controller.emailController.text.contains("@")) {
                         return "Enter Valid Email contains @";
                       }
                       if (controller.emailController.text.isEmpty) {
@@ -86,7 +85,8 @@ class LoginScreen extends StatelessWidget {
                   ),
                   const SizedBox(
                     height: 30,
-                  ),CustomTextFormField(
+                  ),
+                  CustomTextFormField(
                     controller: controller.passwordController,
                     obscureText: true,
                     text: "Password",
@@ -96,25 +96,22 @@ class LoginScreen extends StatelessWidget {
                       if (controller.passwordController.text.isEmpty) {
                         return "Enter Password";
                       }
-                      if(controller.passwordController.text.length<6){
+                      if (controller.passwordController.text.length < 6) {
                         return "Enter Password at least 6 char";
                       }
 
                       return null;
                     },
                   ),
-                   SizedBox(
-                      height: MediaQuery.of(context).size.height*.06
-                  ),
+                  SizedBox(height: MediaQuery.of(context).size.height * .06),
                   CustomButton(
                     text: "Login",
                     onPressed: () {
                       controller.loginFormKey.currentState!.save();
-                      if(controller.loginFormKey.currentState!.validate()) {
-                        controller.signIn();
-                        Get.offAll(()=>const SellerHomeScreen());
+                      if (controller.loginFormKey.currentState!.validate()) {
+                        controller.signIn(controller.emailController.text,controller.passwordController.text);
                       }
-                      },
+                    },
                   ),
                 ],
               ),

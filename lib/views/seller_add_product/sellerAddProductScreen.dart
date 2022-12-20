@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 
 import '../../controllers/sellProductController.dart';
+import '../../controllers/seller_category_controller.dart';
 
 class SellerAddProductScreen extends StatelessWidget {
-
   SellerAddProductScreen({Key? key}) : super(key: key);
 
   final SellProductController sellProductController =
-      Get.put(SellProductController());
+  Get.put(SellProductController());
+  final CategoryController categoryController = Get.put(CategoryController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text("Add Products Screen",style: TextStyle(color: Colors.white),),
+        title: const Text(
+          "Add Products Screen",
+          style: TextStyle(color: Colors.white),
+        ),
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
@@ -32,20 +35,8 @@ class SellerAddProductScreen extends StatelessWidget {
                   child: Row(
                     children: [
                       IconButton(
-                        onPressed: () async {
-                          ImagePicker picker = ImagePicker();
-                          final XFile? image =
-                              await picker.pickImage(source: ImageSource.gallery);
-                          if (image == null) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text("No image was selected"),
-                              ),
-                            );
-                          }
-                          if(image != null){
-
-                          }
+                        onPressed: () {
+                          sellProductController.getProductImage();
                         },
                         icon: const Icon(
                           Icons.add_circle,
@@ -72,41 +63,70 @@ class SellerAddProductScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
               // _buildTextFormField("Product Id"),
-              Column(children: [
-                _buildTextFormField("Product Name"),
-                _buildTextFormField("Product Category"),
-                _buildTextFormField("Price"),
-                _buildTextFormField("Quantity"),
-                _buildTextFormField("Size"),
-                _buildTextFormField("Brand"),
-
-                const SizedBox(
-                  height: 10,
-                ),
-                Center(
-                  child: ElevatedButton(
-
-                    onPressed: () {
-                    },
-                    child: const Text(
-                      "Save",
-                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold,color: Colors.white),
+              Column(
+                children: [
+                  _buildTextFormField(
+                    "Product Name",
+                    controller: sellProductController.nameController,
+                  ),
+                  _buildTextFormField(
+                    "Price",
+                    controller: sellProductController.priceController,
+                  ),
+                  _buildTextFormField(
+                    "Quantity",
+                    controller: sellProductController.quantityController,
+                  ),
+                  _buildTextFormField(
+                    "Size",
+                    controller: sellProductController.sizeController,
+                  ),
+                  _buildTextFormField("Brand",
+                      controller: sellProductController.brandController),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Center(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        sellProductController.createNewProduct(
+                          name: sellProductController.nameController.text,
+                          brand: sellProductController.brandController.text,
+                          size: sellProductController.sizeController.text,
+                          price: double.parse(
+                            sellProductController.priceController.text,
+                          ),
+                          quantity: int.parse(
+                            sellProductController.quantityController.text,
+                          ),
+                          category: categoryController.currentCategory.value,
+                        );
+                      },
+                      child: const Text(
+                        "Save",
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
                     ),
                   ),
-                ),
-              ],)
+                ],
+              )
             ],
           ),
         ),
       ),
     );
   }
-
 }
 
-TextFormField _buildTextFormField(String hintText) {
+TextFormField _buildTextFormField(
+    String hintText, {
+      required TextEditingController controller,
+    }) {
   return TextFormField(
-    initialValue: "",
+    controller: controller,
     decoration: InputDecoration(hintText: hintText),
   );
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../seller_home/seller_home_screen.dart';
+import '../seller_login_screen/login_screen.dart';
 
 class ControlScreen extends StatelessWidget {
 
@@ -16,7 +16,7 @@ class ControlScreen extends StatelessWidget {
         Center(
           child: ElevatedButton(
             onPressed: () {
-              Get.to(()=> const SellerHomeScreen());
+              Get.to(()=> const LoginScreen());
             },
             style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
             child: const Text("Sign as Seller",style: TextStyle(color: Colors.white),),

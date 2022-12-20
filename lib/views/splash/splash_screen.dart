@@ -9,7 +9,8 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Timer(const Duration(seconds: 2), () => Get.offAll(()=> const ControlScreen()));
+    Timer(const Duration(seconds: 2), () =>
+        Get.offAll(()=> const ControlScreen()));
     return Scaffold(
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,

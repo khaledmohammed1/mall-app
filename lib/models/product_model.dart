@@ -1,14 +1,14 @@
 class ProductModel {
-  String? productName;
-  String? productImage;
+  String? name;
+  String? image;
   String? brand;
   String? size;
   double? price;
   int? quantity;
 
   ProductModel({
-    this.productName,
-    this.productImage,
+    this.name,
+    this.image,
     this.brand,
     this.size,
     this.price,
@@ -16,8 +16,8 @@ class ProductModel {
   });
 
   ProductModel.fromJson(Map<String, dynamic> json) {
-    productName = json['productName'] as String?;
-    productImage = json['ProductImage'] as String?;
+    name = json['name'] as String?;
+    image = json['image'] as String?;
     brand = json['brand'] as String?;
     size = json['size'] as String?;
     price = json['price'] as double?;
@@ -26,8 +26,8 @@ class ProductModel {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> json = <String, dynamic>{};
-    json['productName'] = productName;
-    json['ProductImage'] = productImage;
+    json['name'] = name;
+    json['image'] = image;
     json['brand'] = brand;
     json['size'] = size;
     json['price'] = price;

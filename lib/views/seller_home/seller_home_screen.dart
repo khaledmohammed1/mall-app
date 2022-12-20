@@ -1,5 +1,5 @@
-import 'package:customer_ecommerce_app/views/seller_add_product/sellerAddProductScreen.dart';
 import 'package:customer_ecommerce_app/views/seller_category_screen/category_screen.dart';
+import 'package:customer_ecommerce_app/views/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -25,7 +25,7 @@ class SellerHomeScreen extends StatelessWidget {
         child: Column(
           children: [
             Container(width: double.infinity,
-              height: 150,
+              height: 140,
               padding: const EdgeInsets.symmetric(horizontal: 10,),
               child
                   : InkWell(
@@ -37,7 +37,7 @@ class SellerHomeScreen extends StatelessWidget {
                 ),
               ),),
             Container(width: double.infinity,
-              height: 150,
+              height: 140,
               padding: const EdgeInsets.symmetric(horizontal: 10,),
               child
                   : InkWell(
@@ -46,6 +46,18 @@ class SellerHomeScreen extends StatelessWidget {
                 },
                 child: const Card(
                   child: Center(child: Text("Edit or Delete Products"),),
+                ),
+              ),),
+            Container(width: double.infinity,
+              height: 140,
+              padding: const EdgeInsets.symmetric(horizontal: 10,),
+              child
+                  : InkWell(
+                onTap: (){
+                  Get.offAll(() => const SplashScreen());
+                },
+                child: const Card(
+                  child: Center(child: Text("Logout"),),
                 ),
               ),),
           ],

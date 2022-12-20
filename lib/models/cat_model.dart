@@ -1,27 +1,21 @@
 class CategoryModel {
   String? name;
-  String? icon;
-  List<String>? subCategories;
+  String? image;
 
   CategoryModel({
     this.name,
-    this.icon,
-    this.subCategories,
+    this.image,
   });
 
   CategoryModel.fromJson(Map<String, dynamic> json) {
     name = json['name'] as String?;
-    icon = json['icon'] as String?;
-    subCategories = (json['subCategories'] as List?)
-        ?.map((dynamic e) => e as String)
-        .toList();
+    image = json['image'] as String?;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> json = <String, dynamic>{};
     json['name'] = name;
-    json['icon'] = icon;
-    json['subCategories'] = subCategories;
+    json['image'] = image;
     return json;
   }
 }
