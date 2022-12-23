@@ -52,4 +52,9 @@ class CategoryController extends GetxController {
       },
     );
   }
+  void reset(){
+    currentCategory.value='';
+    currentSubCategory.value='';
+    update();
+  }
 }

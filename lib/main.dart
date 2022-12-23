@@ -5,10 +5,12 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import 'helper/binding.dart';
+import 'helper/catch_helper.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await CacheHelper.init();
 
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
