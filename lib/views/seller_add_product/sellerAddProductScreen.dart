@@ -19,11 +19,16 @@ class SellerAddProductScreen extends StatelessWidget {
       builder: (_) {
         return Scaffold(
           appBar: AppBar(
+            automaticallyImplyLeading: false,
+            leading:
+            InkWell(onTap:()=>Get.back(),child: const Icon(Icons.arrow_back_ios_new,color: Colors.white,))
+            ,
             centerTitle: true,
             title: const Text(
-              "Add Products Screen",
+              "Add New Product",
               style: TextStyle(color: Colors.white),
             ),
+            elevation: 0.0,
           ),
           body: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),

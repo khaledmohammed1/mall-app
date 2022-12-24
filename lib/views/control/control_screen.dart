@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../helper/catch_helper.dart';
+import '../seller_home/seller_home_screen.dart';
 import '../seller_login_screen/login_screen.dart';
 
+// ignore: must_be_immutable
 class ControlScreen extends StatelessWidget {
 
-  const ControlScreen({Key? key}) : super(key: key);
+   ControlScreen({Key? key}) : super(key: key);
+  String? uid = CacheHelper.getData(key: "uid");
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +20,8 @@ class ControlScreen extends StatelessWidget {
         Center(
           child: ElevatedButton(
             onPressed: () {
-              Get.to(()=> const LoginScreen());
+              Get.to(()=>  uid==null?const LoginScreen():const SellerHomeScreen());
             },
-            style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
             child: const Text("Sign as Seller",style: TextStyle(color: Colors.white),),
           ),
         ),
@@ -26,7 +29,6 @@ class ControlScreen extends StatelessWidget {
           child: ElevatedButton(
             onPressed: () {
             },
-            style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
             child: const Text("Sign as Buyer",style: TextStyle(color: Colors.white),
           ),
         ),

@@ -7,11 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import '../config/config.dart';
-import '../models/seller_product_model.dart';
+import '../helper/catch_helper.dart';
 
 class SellProductController extends GetxController {
-  List<SellerProduct> products = SellerProduct.products.obs;
-
+  String uid = CacheHelper.getData(key: "uid");
+  SellProductController(){
+    getSellerProduct();
+  }
+  var sellerProducts = <ProductModel>[].obs;
   ImagePicker picker = ImagePicker();
   var productImage = File("").obs;
   TextEditingController nameController = TextEditingController();
@@ -82,6 +85,28 @@ class SellProductController extends GetxController {
       print("error while posting product");
     });
   }
+
+  void getSellerProduct() async {
+    await FirebaseFirestore.instance.collection("Seller").doc(uid).collection("Products").get().then(
+          (value) {
+            sellerProducts.value = [];
+        for (var element in value.docs) {
+          sellerProducts.add(ProductModel.fromJson(element.data()));
+        }
+        print("${sellerProducts.length} and worked");
+
+          },
+    ).catchError(
+          (error) {
+        print("error While getting Product");
+      },
+    );
+  }
+
+  void deleteSellerProduct(int index) {
+    sellerProducts.removeAt(index);
+  }
+
 
   void togglePostingProduct({
     required String category,

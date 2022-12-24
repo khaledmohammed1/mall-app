@@ -3,7 +3,7 @@ import 'package:customer_ecommerce_app/views/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../seller_edit_delete_product/seller_edit_delete_product.dart';
+import '../seller_delete_product/seller_delete_product.dart';
 
 class SellerHomeScreen extends StatelessWidget {
   const SellerHomeScreen({Key? key}) : super(key: key);
@@ -42,10 +42,10 @@ class SellerHomeScreen extends StatelessWidget {
               child
                   : InkWell(
                 onTap: (){
-                  Get.to(() => const SellerEditAndDeleteProduct());
+                  Get.to(() => const SellerDeleteProduct());
                 },
                 child: const Card(
-                  child: Center(child: Text("Edit or Delete Products"),),
+                  child: Center(child: Text("Delete Products"),),
                 ),
               ),),
             Container(width: double.infinity,

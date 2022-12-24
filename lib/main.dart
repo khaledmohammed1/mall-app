@@ -19,8 +19,6 @@ Future main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     Map<int, Color> color = {
@@ -44,4 +42,5 @@ class MyApp extends StatelessWidget {
       home: const SplashScreen(),
     );
   }
+   const MyApp({Key? key}) : super(key: key);
 }

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,9 +14,15 @@ class CategoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() => Scaffold(
-      appBar: AppBar(
+      appBar:AppBar(
+        automaticallyImplyLeading: false,
+        leading:
+        InkWell(onTap:()=>Get.back(),child: const Icon(Icons.arrow_back_ios_new,color: Colors.white,))
+        ,
+        centerTitle: true,
         title: const Text(
           "Category",
+          style: TextStyle(color: Colors.white),
         ),
         elevation: 0.0,
       ),
